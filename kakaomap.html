@@ -21,7 +21,7 @@ var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니
 function setCenter(lat,lng) {            
     var mp = new kakao.maps.LatLng(lat,lng);
     map.setCenter(mp);
-    var maker = new kakao.maps({
+    var maker = new kakao.maps.Marker({
         position: mp
     });
     marker.setMap(map);
