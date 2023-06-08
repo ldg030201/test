@@ -10,6 +10,7 @@
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b8ee6ab047865aa6d835500981059f51"></script>
 <script>
+var beforeMaker = null;
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = { 
         center: new kakao.maps.LatLng(37.330524, 126.689433), // 지도의 중심좌표
@@ -18,13 +19,16 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 
 var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
-function setCenter(lat,lng) {            
+function setCenter(lat,lng) {
+    if (beforeMaker !== null) beforeMaker.setMap(null);
+
     var mp = new kakao.maps.LatLng(lat,lng);
     map.setCenter(mp);
     var marker = new kakao.maps.Marker({
         position: mp
     });
     marker.setMap(map);
+    beforeMaker = marker;
 }
 </script>
 </body>
